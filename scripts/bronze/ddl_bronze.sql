@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS bronze.crm_cust_info;
 create table bronze.crm_cust_info (
-	cst_id              INTEGER PRIMARY KEY,
-    cst_key             VARCHAR(20) NOT NULL,
+	cst_id              INTEGER,
+    cst_key             VARCHAR(20),
     cst_firstname       VARCHAR(50),
     cst_lastname        VARCHAR(50),
     cst_marital_status  CHAR(1),         -- E.g. M, S
@@ -11,8 +11,8 @@ create table bronze.crm_cust_info (
 
 DROP TABLE IF EXISTS bronze.crm_prd_info;
 create table bronze.crm_prd_info (
-	prd_id         INTEGER PRIMARY KEY,
-    prd_key        VARCHAR(30) NOT NULL,
+	prd_id         INTEGER,
+    prd_key        VARCHAR(30),
     prd_nm         VARCHAR(100),
     prd_cost       NUMERIC(10,2),    
     prd_line       VARCHAR(10),
