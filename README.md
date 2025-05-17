@@ -18,7 +18,7 @@ The data architecture for this project follows Medallion Architecture **Bronze**
 
 
 #### Objective
-Develop a modern data warehouse using SQL Server to consolidate sales data, enabling analytical reporting and informed decision-making.
+Develop a modern data warehouse using PostgreSQL to consolidate sales data, enabling analytical reporting and informed decision-making.
 
 
 ## 📂 Repository Structure
