@@ -22,14 +22,17 @@ FROM '/tmp/erp/CUST_AZ12.csv'
 DELIMITER ','
 CSV HEADER;
 
+TRUNCATE TABLE bronze.erp_px_cat_g1v2;
+COPY bronze.erp_px_cat_g1v2 (id, cat, subcat, maintenance)
+FROM '/tmp/erp/PX_CAT_G1V2.csv'
+DELIMITER ','
+CSV HEADER;
+
 TRUNCATE TABLE bronze.erp_loc_a101;
-COPY bronze.erp_loc_a101 (id, cat, subcat, maintenance)
+COPY bronze.erp_loc_a101 (cid, cntry)
 FROM '/tmp/erp/LOC_A101.csv'
 DELIMITER ','
 CSV HEADER;
 
-TRUNCATE TABLE bronze.erp_px_cat_g1v2;
-COPY bronze.erp_px_cat_g1v2 (cid, cntry)
-FROM '/tmp/erp/PX_CAT_G1V2.csv'
-DELIMITER ','
-CSV HEADER;
+
+
