@@ -7,8 +7,8 @@ CREATE TABLE silver.crm_cust_info (
     cst_key             VARCHAR(20),
     cst_firstname       VARCHAR(50),
     cst_lastname        VARCHAR(50),
-    cst_marital_status  CHAR(1),         -- E.g. M, S
-    cst_gndr            CHAR(1),         -- E.g. M, F
+    cst_marital_status  VARCHAR(20),         -- E.g. M, S
+    cst_gndr            VARCHAR(20),         -- E.g. M, F
     cst_create_date     DATE,
     dwh_create_date     DATE DEFAULT CURRENT_DATE
 );
