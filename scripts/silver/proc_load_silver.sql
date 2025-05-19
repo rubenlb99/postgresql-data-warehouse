@@ -140,7 +140,7 @@ SELECT
         WHEN UPPER(cntry) IN ('UNITED STATES', 'USA', 'US') THEN 'United States'
 		WHEN UPPER(cntry) IN ('DE', 'GERMANY') THEN 'Germany'
         WHEN TRIM(cntry) = '' OR cntry IS NULL THEN 'n/a'
-        ELSE cntry
+        ELSE TRIM(cntry)
     END AS cntry
 FROM bronze.erp_loc_a101;
 
