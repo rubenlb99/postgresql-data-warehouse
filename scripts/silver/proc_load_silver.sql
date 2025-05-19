@@ -101,3 +101,31 @@ FROM bronze.crm_sales_details;
 
 # ===============================================================================================================
 
+TRUNCATE TABLE silver.erp_cust_az12;
+INSERT INTO silver.erp_cust_az12 (
+    cid,
+    bdate,
+    gen
+)
+SELECT 
+    CASE 
+        WHEN cid LIKE 'NAS%' 
+        THEN SUBSTRING(cid, 4, LENGTH(cid))
+        ELSE cid
+    END AS cid,
+    CASE
+        WHEN bdate > CURRENT_DATE
+        THEN NULL
+        ELSE bdate
+    END AS bdate,
+    CASE
+        WHEN gen = 'Female' OR UPPER(TRIM(gen)) = 'F'
+        THEN 'Female'
+        WHEN gen = 'Male' OR UPPER(TRIM(gen)) = 'M'
+        THEN 'Male'
+        ELSE 'n/a'
+    END AS gen
+FROM bronze.erp_cust_az12;
+
+# ===============================================================================================================
+
