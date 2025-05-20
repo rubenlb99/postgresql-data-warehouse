@@ -41,3 +41,22 @@ FROM silver.crm_prd_info pi
 JOIN silver.erp_px_cat_g1v2 cat
     ON pi.cat_id = cat.id
 WHERE pi.prd_end_dt IS NULL; --filter historical data
+
+-- fact sales
+
+CREATE OR REPLACE VIEW gold.fact_sales AS
+SELECT
+    s.sls_ord_num AS order_number,
+    c.customer_key AS customer_key,
+    p.product_key AS product_key,
+    s.sls_order_dt AS order_date,
+    s.sls_ship_dt AS shipping_date,
+    s.sls_due_dt AS due_date,
+    s.sls_quantity AS quantity,
+    s.sls_price AS price,
+    s.sls_sales AS total_amount
+FROM silver.crm_sales_details s
+JOIN gold.dim_products p
+    ON s.sls_prd_key = p.product_number
+JOIN gold.dim_customer c
+    ON s.sls_cust_id = c.customer_id;
